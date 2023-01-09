@@ -123,9 +123,9 @@ pub fn is_num(char: &String) -> bool {
 }
 
 /// Compute the strength of a password.
-pub fn password_strength(password: String) -> usize {
+pub fn password_strength(password: &String) -> usize {
     let mut result: usize = 0;
-    let char_list: Vec<String> = clean_split(password, String::from(""));
+    let char_list: Vec<String> = clean_split(password.to_string(), String::from(""));
     for item in &char_list {
         let current_item: &String = &item;
         let current_item_type: String = string_type(&item);
@@ -162,7 +162,7 @@ pub fn password_strength(password: String) -> usize {
 }
 
 /// Simplified strenght measure.
-pub fn is_secure(password: String) -> bool {
+pub fn is_secure(password: &String) -> bool {
     let mut result: bool = false;
     if password_strength(password) > 8 {
         result = true;
@@ -172,7 +172,7 @@ pub fn is_secure(password: String) -> bool {
 }
 
 /// Generate a random password.
-pub fn generate_password(length: usize) -> String {
+pub fn generate_password(length:&usize) -> String {
     let mut result_list: Vec<String> = Vec::new();
     let alphabet_string: String = String::from(
         "abcdefghijklmnopqrstuvwxyz1234567890@_;.:"
@@ -216,11 +216,11 @@ pub fn test_all(){
     println!("{:?}",string_type(&String::from("@")));
     println!("{:?}",is_num(&String::from("a")));
     println!("{:?}",is_num(&String::from("2")));
-    println!("{:?}",password_strength(String::from("1969HoglinSteak")));
-    println!("{:?}",password_strength(String::from("1969HoglinSteak_@@")));
-    println!("{:?}",is_secure(String::from("1969HoglinSteak")));
-    println!("{:?}",is_secure(String::from("1969HoglinSteak_@@")));
-    println!("{:?}",generate_password(256));
+    println!("{:?}",password_strength(&String::from("1969HoglinSteak")));
+    println!("{:?}",password_strength(&String::from("1969HoglinSteak_@@")));
+    println!("{:?}",is_secure(&String::from("1969HoglinSteak")));
+    println!("{:?}",is_secure(&String::from("1969HoglinSteak_@@")));
+    println!("{:?}",generate_password(&256));
 
 
 }
