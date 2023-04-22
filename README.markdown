@@ -10,15 +10,51 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 
 ## INSTALLATION :inbox_tray:
 
+### FOR RUST PROJECTS
+
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = { git = "https://github.com/angeldollface/flek", version = "1.1.0" }
+flek = { git = "https://github.com/angeldollface/flek", version = "1.2.0" }
 ```
+
+### FOR THE COMMAND LINE
+
+***COMING SOON!***
 
 ## USAGE :hammer:
 
-For usage instuctions on ***Flek***'s functions, please check out `lib.rs`.
+### APIs
+
+For usage instuctions on ***Flek***'s functions, please check out the `src` directory. The most important functions are in `src/modules/flek.rs`.
+
+### COMMAND LINE
+
+To get info about one of your passwords' security, make sure the `cf` command is available from the command line. If the command is available, you can run these commands from the command line:
+
+- Get security info about your password:
+
+```bash
+cf -p 1969HoglinSteak_@
+# or
+cf --pwd 1969HoglinSteak_@
+```
+
+- Get version info:
+
+```bash
+cf -v
+# or
+cf --version
+```
+
+- Get help info:
+
+```bash
+cf -h
+# or
+cf --help
+```
 
 ## LINKS :heart_on_fire:
 
@@ -39,6 +75,12 @@ There are other implementations of my algorithm in other languages:
 
 - The Doll Update.
 - Updated, published, and uploaded under my new name.
+
+### Version 1.2.0
+
+- Split the code into modules.
+- Added a small CLI command to the project.
+- Added unit tests.
 
 ## NOTE :scroll:
 

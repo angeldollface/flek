@@ -16,3 +16,42 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: run
+      - name: Test a password! (short)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- -p 1969HoglinSteak_@@
+      - name: Test a password! (long)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- --pwd 1969HoglinSteak_@@
+      - name: Display version info. (short)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- -v
+      - name: Display version info. (long)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- --version
+      - name: Display help info. (short)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- -h
+      - name: Display help info. (long)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- --help
+      - name: Display version info. (short)
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: -- -v
+      - name: Run unit tests.
+        uses: actions-rs/cargo@v1
+        with:
+          command: test

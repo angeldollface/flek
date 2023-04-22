@@ -3,8 +3,8 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
-use flek;
+use flek::cli;
 
 fn main(){
-    flek::test_all();
+    cli();
 }
