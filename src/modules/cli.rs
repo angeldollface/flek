@@ -17,8 +17,8 @@ pub fn cli() -> () {
     // data.
     let mut cflek: App = App::new(
         &"CFlek",
-        &"1.0.0",
-        &"Alexander Abraham"
+        &"1.2.0",
+        &"Angel Dollface"
     );
 
     // Adding the password flag to accept user passwords.
