@@ -4,10 +4,10 @@ Licensed under the MIT license.
 */
 
 /// Security weight.
-pub const security_weight: usize = 3;
+pub const SECURITY_WEIGHT: usize = 3;
 
 /// The weight a special character has.
-pub const special_char_weight: usize = 3;
+pub const SPECIAL_CHAR_WEIGHT: usize = 3;
 
 /// The weight an arabic character has.
-pub const arabic_character_weight: usize = 2;
+pub const ARABIC_CHARACTER_WEIGHT: usize = 2;

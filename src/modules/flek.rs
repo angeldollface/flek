@@ -34,17 +34,17 @@ use super::utils::get_item_index;
 /// get the space between two chars.
 use super::utils::get_char_space;
 
-/// Imports the "security_weight"
+/// Imports the "SECURITY_WEIGHT"
 /// variable from "weights".
-use super::weights::security_weight;
+use super::weights::SECURITY_WEIGHT;
 
 /// Imports the "special_char_weight"
 /// variable from "weights".
-use super::weights::special_char_weight;
+use super::weights::SPECIAL_CHAR_WEIGHT;
 
 /// Imports the "arabic_character_weight"
 /// variable from "weights".
-use super::weights::arabic_character_weight;
+use super::weights::ARABIC_CHARACTER_WEIGHT;
 
 /// A struct to represent password security
 /// information.
@@ -92,18 +92,18 @@ pub fn password_strength(password: &String) -> usize {
         let previous_item_type = string_type(&previous_item);
         if current_item_type == String::from("normChar") && previous_item_type == String::from("normChar") {
             let item_space = get_char_space(&current_item, &previous_item);
-            if item_space > security_weight {
-                result = result + arabic_character_weight;
+            if item_space > SECURITY_WEIGHT {
+                result = result + ARABIC_CHARACTER_WEIGHT;
             } else {
                 // Do nothing.
             }
         } else if current_item_type == String::from("specialChar") &&
             previous_item_type == String::from("specialChar") {
-                result = result + special_char_weight;
+                result = result + SPECIAL_CHAR_WEIGHT;
         } else if current_item_type == String::from("int") && previous_item_type == String::from("int") {
             let item_space: usize = get_num_space(&current_item, &previous_item);
-            if item_space > security_weight {
-                result = result + arabic_character_weight;
+            if item_space > SECURITY_WEIGHT {
+                result = result + ARABIC_CHARACTER_WEIGHT;
             } else {
                 // Do nothing.
             }

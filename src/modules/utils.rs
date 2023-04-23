@@ -3,8 +3,15 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
+/// Importing the API for random numbers.
 use rand::Rng;
+
+/// Importing core traits:
+/// "Debug".
 use core::fmt::Debug;
+
+/// Importing core traits:
+/// "PartialEq".
 use std::cmp::PartialEq;
 
 /// Get a random item from a string vector.
