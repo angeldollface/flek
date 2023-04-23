@@ -25,7 +25,7 @@ Execute these steps in order:
 - 1.) Download the executable for your platform from the [Releases Section](https://github.com/angeldollface/flek/releases).
 - 2.) Save it in a location that is on your system path.
 
-If your platform's architecture isn't in the list of executables, please file an issue [here](https://github.com/angeldollface/flek/issues). If you encounter any other problems please also file an issue.
+If your platform's architecture isn't in the list of executables, please file an issue [here](https://github.com/angeldollface/flek/issues). If you encounter any other problems, please also file an issue.
 
 ## USAGE :hammer:
 
