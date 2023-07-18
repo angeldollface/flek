@@ -40,25 +40,31 @@ To get info about one of your passwords' security, make sure the `cf` command is
 - Get security info about your password:
 
 ```bash
-cf -p 1969HoglinSteak_@
-# or
-cf --pwd 1969HoglinSteak_@
+flek -p 1969HoglinSteak_@
+# OR
+flek --pwd 1969HoglinSteak_@
+# OR
+flek pwd 1969HoglinSteak_@
 ```
 
 - Get version info:
 
 ```bash
-cf -v
-# or
-cf --version
+flek -v
+# OR
+flek --version
+# OR
+flek version
 ```
 
 - Get help info:
 
 ```bash
-cf -h
-# or
-cf --help
+flek -h
+# OR
+flek --help
+# OR
+flek help
 ```
 
 ## LINKS :heart_on_fire:
