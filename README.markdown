@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = { git = "https://github.com/angeldollface/flek", version = "1.2.0" }
+flek = { git = "https://github.com/angeldollface/flek", version = "1.3.0" }
 ```
 
 ### FOR THE COMMAND LINE
@@ -86,6 +86,12 @@ There are other implementations of my algorithm in other languages:
 - Split the code into modules.
 - Added a small CLI command to the project.
 - Added unit tests.
+
+### Version 1.3.0
+
+- Updated dependency for CLI building.
+- Aggressive optimization of the executable.
+- Aggressively better error handling.
 
 ## NOTE :scroll:
 
