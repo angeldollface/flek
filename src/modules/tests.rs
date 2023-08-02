@@ -36,7 +36,8 @@ pub fn test_pwd_strength() -> () {
 /// Testing the "security_info" method.
 #[test]
 pub fn test_security_info() -> () {
-    let res: SecurityInfo = security_info(&String::from("1969HoglinSteak_@@"));
-    let sample: SecurityInfo = SecurityInfo::new(&12, &true);
+    let pwd: String = String::from("1969HoglinSteak_@@");
+    let res: SecurityInfo = security_info(&pwd);
+    let sample: SecurityInfo = SecurityInfo::new(&pwd, &12, &true);
     assert_eq!(sample, res);
 }

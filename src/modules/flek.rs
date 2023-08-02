@@ -3,6 +3,18 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
+/// Importing the standard
+/// "Result" enum.
+use std::fmt::Result;
+
+/// Importing the standard
+/// "Display" trait.
+use std::fmt::Display;
+
+/// Importing the standard
+/// "Formatter" trait.
+use std::fmt::Formatter;
+
 /// Imports the "clean_split"
 /// method from "utils" to split
 /// strings.
@@ -48,8 +60,9 @@ use super::weights::ARABIC_CHARACTER_WEIGHT;
 
 /// A struct to represent password security
 /// information.
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct SecurityInfo {
+    pub password: String,
     pub score: usize,
     pub is_secure: bool
 }
@@ -58,8 +71,9 @@ pub struct SecurityInfo {
 impl SecurityInfo {
 
     /// Creates a new instance of the struct.
-    pub fn new(score: &usize, is_secure: &bool) -> SecurityInfo {
+    pub fn new(password: &String, score: &usize, is_secure: &bool) -> SecurityInfo {
         return SecurityInfo {
+            password: password.to_owned(),
             score: score.to_owned(),
             is_secure: is_secure.to_owned()
         }
@@ -72,6 +86,13 @@ impl SecurityInfo {
         result.push(self.score.to_string());
         result.push(self.is_secure.to_string());
         return result;
+    }
+}
+
+/// Implements the Display trait.
+impl Display for SecurityInfo {
+    fn fmt(&self, f: &mut Formatter) -> Result {
+        return write!(f,"Password: {}\nScore: {}\nStatus: {}",&self.password, &self.score, &self.is_secure);
     }
 }
 
@@ -128,6 +149,7 @@ pub fn is_secure(password: &String) -> bool {
 /// password.
 pub fn security_info(password: &String) -> SecurityInfo {
     return SecurityInfo::new(
+        &password,
         &password_strength(password),
         &is_secure(password)
     );
