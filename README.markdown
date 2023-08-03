@@ -20,12 +20,7 @@ flek = "1.4.0"
 
 ### FOR THE COMMAND LINE
 
-Execute these steps in order:
-
-- 1.) Download the executable for your platform from the [Releases Section](https://github.com/angeldollface/flek/releases).
-- 2.) Save it in a location that is on your system path.
-
-Alternatively, you can also simply install ***Flek*** via Cargo itself using this command:
+You can install ***Flek*** via Cargo itself using this command:
 
 ```bash
 cargo install flek
