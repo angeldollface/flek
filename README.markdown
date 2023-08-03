@@ -1,21 +1,21 @@
-# FLEK :crab: :ribbon:
+# FLEK
 
 ![GitHub CI](https://github.com/angeldollface/flek/actions/workflows/rust.yml/badge.svg)
 
-***A Rustacean implementation of my own algorithms to check for password security.:crab: :ribbon:***
+***A Rustacean implementation of my own algorithms to check for password security.***
 
-## ABOUT :books:
+## ABOUT
 
-This is my Rust implementation of a package I wrote in [Dart](https://github.com/angeldollface/securitycheck) roughly a year ago and implemented also in [ECMA Script](https://github.com/angeldollface/vulcheck) only a couple of days ago. These packages all do one thing: They provide functions for you to check whether your passwords are secure or not. My algorithm gives your password a score and if the score is higher than eight, then the password is deemed to be secure. Why ***Flek***? The name is a combination of the words ***Fl***aw and Ch***e(c)k***. All of these packages implement an algorithm of my own design and have all been optimized to be as fast as possible. Enjoy. :heart:
+This is my Rust implementation of a package I wrote in [Dart](https://github.com/angeldollface/securitycheck) roughly a year ago and implemented also in [ECMA Script](https://github.com/angeldollface/vulcheck). These packages all do one thing: They provide functions for you to check whether your passwords are secure or not. My algorithm gives your password a score and if the score is higher than eight, then the password is deemed to be secure. Why ***Flek***? The name is a combination of the words ***Fl***aw and Ch***e(c)k***. All of these packages implement an algorithm of my own design and have all been optimized to be as fast as possible. Enjoy. :heart:
 
-## INSTALLATION :inbox_tray:
+## INSTALLATION
 
 ### FOR RUST PROJECTS
 
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = { git = "https://github.com/angeldollface/flek", version = "1.3.0" }
+flek = "1.4.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -25,17 +25,21 @@ Execute these steps in order:
 - 1.) Download the executable for your platform from the [Releases Section](https://github.com/angeldollface/flek/releases).
 - 2.) Save it in a location that is on your system path.
 
-If your platform's architecture isn't in the list of executables, please file an issue [here](https://github.com/angeldollface/flek/issues). If you encounter any other problems, please also file an issue.
+Alternatively, you can also simply install ***Flek*** via Cargo itself using this command:
 
-## USAGE :hammer:
+```bash
+cargo install flek
+```
+
+## USAGE
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions, please check out the `src` directory. The most important functions are in `src/modules/flek.rs`.
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.4.0).
 
 ### COMMAND LINE
 
-To get info about one of your passwords' security, make sure the `cf` command is available from the command line. If the command is available, you can run these commands from the command line:
+To get info about the security analysis of a password, make sure the `flek` command is available from the command line. If the command is available, you can run these commands from the command line:
 
 - Get security info about your password:
 
@@ -67,15 +71,15 @@ flek --help
 flek help
 ```
 
-## LINKS :heart_on_fire:
+## LINKS
 
 There are other implementations of my algorithm in other languages:
 
 - Dart: [VIEW](https://github.com/angeldollface/securitycheck)
 - ECMA Script: [VIEW](https://github.com/angeldollface/vulcheck)
-- A small web app showcasing the algorithm: [VIEW](https://github.com/angeldollface/vcheck)
+- A small web app showcasing the algorithm: [VIEW](https://github.com/angeldollface/vcheck.rs)
 
-## CHANGELOG :black_nib:
+## CHANGELOG
 
 ### Version 1.0.0
 
@@ -99,7 +103,14 @@ There are other implementations of my algorithm in other languages:
 - Aggressive optimization of the executable.
 - Aggressively better error handling.
 
-## NOTE :scroll:
+### Version 1.4.0
 
-- *Flek :crab: :ribbon:* by Alexander Abraham :black_heart: a.k.a. *"Angel Dollface" :dolls: :ribbon:*
+- Added even better handling of errors.
+- Removed redundant functions.
+- Added a new dependency: `coutils`.
+- Removed the `rand` dependency.
+
+## NOTE
+
+- *Flek* by Alexander Abraham a.k.a. *"Angel Dollface"*
 - Licensed under the MIT license.

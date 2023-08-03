@@ -3,51 +3,38 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
-/// Importing the API for random numbers.
-use rand::Rng;
+/// Importing the "is_int"
+/// method from the "coutils"
+/// crate to check whether
+/// a given character is
+/// an integer.
+use coutils::is_int;
 
-/// Importing core traits:
-/// "Debug".
-use core::fmt::Debug;
+/// Importing the "parse_int"
+/// method from the "coutils"
+/// crate to convert a given
+/// character into an unsigend
+/// integer.
+use coutils::parse_int;
 
-/// Importing core traits:
-/// "PartialEq".
-use std::cmp::PartialEq;
+/// Importing the "get_index"
+/// method from the "coutils"
+/// crate to get the index
+/// of an item in a vector.
+use coutils::get_index;
 
-/// Get a random item from a string vector.
-pub fn get_rand_item(subject: &Vec<String>) -> String {
-    let mut range = rand::thread_rng();
-    return subject[range.gen_range(0..subject.len())].clone();
-}
+/// Imports the "clean_split"
+/// method from the "coutils" crate 
+/// to split strings into a
+/// vector of strings.
+use coutils::clean_split;
 
-/// Convert string to a number.
-pub fn conv_to_num(char: &String) -> usize {
-    let mut result: usize = 0;
-    if is_num(&char) == true {
-        result = char.parse::<usize>().unwrap();
-    }
-    else {}
-    return result;
-}
+/// Importing Flek's error-handling
+/// data structure.
+use super::error::FlekError;
 
-/// Get index of a list item and return it.
-pub fn get_item_index<T: Debug + Clone + PartialEq>(subject: &Vec<T>, item: &T) -> usize {
-    return subject.iter().position(|r| r == item).unwrap();
-}
-
-/// Returns a vector of strings from a character split for a string.
-/// Both the string and split character have to be strings.
-pub fn clean_split(subject: &String, split_char: &String) -> Vec<String> {
-    let mut result: Vec<String> = Vec::new();
-    for item in subject.split(&*split_char) {
-        let new_item: String = item.to_string();
-        result.push(new_item);
-    }
-    return result;
-}
-
-/// Get the character position from a list.
-pub fn get_char_pos(char: &String) -> usize {
+/// Get the character position from a string if possible.
+pub fn get_char_pos(char: &String) -> Result<usize,FlekError> {
     let mut result: usize = 0;
     let alphabet: String = String::from(
         "abcdefghijklmnopqrstuvwxyz"
@@ -55,37 +42,48 @@ pub fn get_char_pos(char: &String) -> usize {
     let alphabet_list: Vec<String> = clean_split(&alphabet, &String::from(""));
     for letter in &alphabet_list {
         if letter == char {
-            result = get_item_index(&alphabet_list.to_owned(), &letter);
+            result = match get_index(&alphabet_list.to_owned(), &letter){
+                Ok(result) => result,
+                Err(e) => {
+                    return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
+                }
+            }
         }
         else {
             // Do nothing.
         }
     }
-    return result;
+    return Ok(result);
 }
 
-/// Get the distance between two characters.
-pub fn get_char_space(char_one: &String, char_two: &String) -> usize {
-    let char_one_index = get_char_pos(&char_one);
-    let char_two_index = get_char_pos(&char_two);
+/// Get the distance between two characters if possible.
+pub fn get_char_space(char_one: &String, char_two: &String) -> Result<usize,FlekError> {
+    let char_one_index = match get_char_pos(&char_one){
+        Ok(char_one_index) => char_one_index,
+        Err(e) => {
+            return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
+        }
+    };
+    let char_two_index = match get_char_pos(&char_two) {
+        Ok(char_two_index) => char_two_index,
+        Err(e) => {
+            return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
+        }
+    };
     let mut result: usize = 0;
-    if &char_one_index > &char_two_index {
-        // Do nothing.
-    }
+    if &char_one_index > &char_two_index {}
     else {
         result = char_two_index - char_one_index;
     }
-    return result;
+    return Ok(result);
 }
 
 /// Get the space between two numbers.
 pub fn get_num_space(num_one: &String, num_two: &String) -> usize {
     let mut result: usize = 0;
-    if conv_to_num(&num_one) > conv_to_num(&num_two) {
-        // Do nothing.
-    }
+    if parse_int(&num_one) > parse_int(&num_two) {}
     else {
-        result = conv_to_num(&num_two) - conv_to_num(&num_one);
+        result = parse_int(&num_two) - parse_int(&num_one);
     }
     return result;
 }
@@ -93,7 +91,7 @@ pub fn get_num_space(num_one: &String, num_two: &String) -> usize {
 /// Get the type of string.
 pub fn string_type(char: &String) -> String {
     let mut result: String = String::from("int");
-    if is_num(&char) == false {
+    if is_int(&char) == false {
         let alphabet: String = String::from(
             "abcdefghijklmnopqrstuvwxyz"
         );
@@ -106,18 +104,5 @@ pub fn string_type(char: &String) -> String {
         }
     }
     else {}
-    return result;
-} 
-
-/// Check if a number is a number or not.
-pub fn is_num(char: &String) -> bool {
-    let mut result: bool = false;
-    let match_op = char.parse::<usize>();
-    match match_op {
-        Ok(_x) => {
-            result = true;
-        },
-        Err(_e) => {}
-    };
     return result;
 }

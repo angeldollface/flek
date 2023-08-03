@@ -3,8 +3,8 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
-/// The command-line interface
-/// module.
+/// Exporting the module that
+/// contains Flek's CLI.
 pub mod cli;
 
 /// Exporting the testing module
@@ -12,12 +12,18 @@ pub mod cli;
 #[cfg(test)]
 pub mod tests;
 
-/// The module with Flek's
-/// main functions.
+/// Exporting the module 
+/// with Flek's main functions.
 pub mod flek;
 
-/// Tools for Flek.
+/// Exporting the module that contains
+/// utility functions.
 pub mod utils;
 
-/// Security weights.
+/// Exporting the error
+/// module.
+pub mod error;
+
+/// Exporting the module that contains
+/// security weights.
 pub mod weights;
