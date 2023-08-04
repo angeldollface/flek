@@ -6,7 +6,7 @@
 
 ## ABOUT
 
-This is my Rust implementation of a package I wrote in [Dart](https://github.com/angeldollface/securitycheck) roughly a year ago and implemented also in [ECMA Script](https://github.com/angeldollface/vulcheck). These packages all do one thing: They provide functions for you to check whether your passwords are secure or not. My algorithm gives your password a score and if the score is higher than eight, then the password is deemed to be secure. Why ***Flek***? The name is a combination of the words ***Fl***aw and Ch***e(c)k***. All of these packages implement an algorithm of my own design and have all been optimized to be as fast as possible. Enjoy. :heart:
+This is my Rust implementation of a package I wrote in [Dart](https://github.com/angeldollface/securitycheck) roughly a year ago and implemented also in [ECMA Script](https://github.com/angeldollface/vulcheck). These packages all do one thing: They provide functions for you to check whether your passwords are secure or not. My algorithm gives your password a score and if the score is higher than eight, then the password is deemed to be secure. Why ***Flek***? The name is a combination of the words ***Fl***aw and Ch***e(c)k***. All of these packages implement an algorithm of my own design and have all been optimized to be as fast as possible. Enjoy.
 
 ## INSTALLATION
 
@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = "1.4.0"
+flek = "1.5.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -30,7 +30,7 @@ cargo install flek
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.4.0).
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.5.0).
 
 ### COMMAND LINE
 
@@ -104,6 +104,12 @@ There are other implementations of my algorithm in other languages:
 - Removed redundant functions.
 - Added a new dependency: `coutils`.
 - Removed the `rand` dependency.
+
+### Version 1.5.0
+
+- Updated the version of the `cliply` crate.
+- Updated the version of the `coutils` crate to work better with WASM builds.
+- Updated documentation.
 
 ## NOTE
 
