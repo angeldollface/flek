@@ -2,7 +2,7 @@ on: [push]
 name: FLEK CI
 jobs:
   build_and_test:
-    name: Acid
+    name: FLEK CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
