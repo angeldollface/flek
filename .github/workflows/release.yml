@@ -3,7 +3,7 @@ on: [push]
     #- '*'
 env:
   MANDY_ENV: "production"
-name: Mandy Release CI
+name: Flek Release CI
 jobs:
     release:
         name: ${{ matrix.target }}
@@ -30,14 +30,14 @@ jobs:
               id: get_version
               uses: SebRollen/toml-action@v1.0.2
               with:
-                file: mandy-bin/Cargo.toml
+                file: Cargo.toml
                 field: package.version
                         
-            - name: "Build Mandy."
+            - name: "Build the binary."
               uses: actions-rs/cargo@v1
               with:
                 command: build
-                args: -p mandy-bin --release
+                args: --release
             
             - name: "Rename binary Windows."
               if: ${{ matrix.os == 'windows-latest' }}
@@ -49,5 +49,5 @@ jobs:
             
             - uses: actions/upload-artifact@v3
               with:
-                name: mandy-${{ steps.get_version.outputs.value }}-${{ matrix.target }}
+                name: flek-${{ steps.get_version.outputs.value }}-${{ matrix.target }}
                 path: target/release/flek-${{ steps.get_version.outputs.value }}-${{ matrix.target }}*
