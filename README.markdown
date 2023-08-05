@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = "1.5.0"
+flek = "1.6.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -26,11 +26,13 @@ You can install ***Flek*** via Cargo itself using this command:
 cargo install flek
 ```
 
+Alternatively, you can download a compiled binary for 64-bit systems from this repository's [Releases](https://github.com/angeldollface/flek/releases) section.
+
 ## USAGE
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.5.0).
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.6.0).
 
 ### COMMAND LINE
 
@@ -110,6 +112,12 @@ There are other implementations of my algorithm in other languages:
 - Updated the version of the `cliply` crate.
 - Updated the version of the `coutils` crate to work better with WASM builds.
 - Updated documentation.
+
+### Version 1.6.0
+
+- Updated documentation.
+- Updated the version of the CLI tool.
+- Automatic generation of binaries for 64-bit desktop platforms.
 
 ## NOTE
 

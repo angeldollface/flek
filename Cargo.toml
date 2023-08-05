@@ -1,13 +1,13 @@
 [package]
 name = "flek"
-version = "1.5.0"
+version = "1.6.0"
 edition = "2021"
 license = "MIT"
 authors = ["Angel Dollface <angelbbe@proton.me>"]
 description= "A Rustacean implementation of my own algorithms to check for password security."
 homepage = "https://github.com/angeldollface/flek"
 repository = "https://github.com/angeldollface/flek"
-documentation = "https://docs.rs/flek/1.5.0"
+documentation = "https://docs.rs/flek/1.6.0"
 readme = "README.markdown"
 keywords = [
   "security"
@@ -28,8 +28,8 @@ name = "flek"
 path = "src/main.rs"
 
 [profile.release]
+lto = true
 strip = true
 opt-level = "s"
 panic = "abort"
-lto = true
 codegen-units = 1
