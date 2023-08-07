@@ -2,8 +2,6 @@ on:
     push:
         tags:
         - '*'
-env:
-  MANDY_ENV: "production"
 name: Flek Release CI
 jobs:
     release:
