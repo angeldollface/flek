@@ -28,6 +28,12 @@ cargo install flek
 
 Alternatively, you can download a compiled binary for 64-bit systems from this repository's [Releases](https://github.com/angeldollface/flek/releases) section.
 
+I recently uploaded ***Flek*** to the Arch User Repository so you can install ***Flek*** from there using this command:
+
+```bash
+paru -S flek
+```
+
 ## USAGE
 
 ### APIs
