@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = "1.7.0"
+flek = "1.8.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -38,7 +38,7 @@ paru -S flek
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.7.0).
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.8.0).
 
 ### COMMAND LINE
 
@@ -142,6 +142,12 @@ There are other implementations of my algorithm in other languages:
 - Added a method to generate a secure password.
 - Added a flag to the CLI tool to generate a secure password.
 - Added a data structure to hold information about a secure password.
+
+### Version 1.8.0
+
+- Updated documentation.
+- Added an error case for when an invalid length is supplied to the API for generating a secure password!
+- Added an error case for when an empty string is supplied to the API for password analysis.
 
 ## NOTE
 

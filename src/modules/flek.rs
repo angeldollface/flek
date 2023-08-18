@@ -135,43 +135,52 @@ impl PasswordInfo{
 /// Compute the strength of a password.
 pub fn password_strength(password: &String) -> Result<usize, FlekError> {
     let mut result: usize = 0;
-    let char_list: Vec<String> = clean_split(&password, &String::from(""));
-    for item in &char_list {
-        let current_item: &String = &item;
-        let current_item_type: String = string_type(&item);
-        let current_index: usize = match get_index(&char_list, &item){
-            Ok(current_index) => current_index,
-            Err(e) => {
-                return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
-            }
-        };
-        if &current_index == &0 {
-            // Do nothing.
-        }
-        else {
-            let previous_item_index = current_index - 1;
-        let previous_item: &String = &char_list.clone()[previous_item_index].clone();
-        let previous_item_type = string_type(&previous_item);
-        if current_item_type == String::from("normChar") && previous_item_type == String::from("normChar") {
-            let item_space = match get_char_space(&current_item, &previous_item){
-                Ok(item_space) => item_space,
+    let pwd_chars: Vec<char> = password.chars().collect();
+    if pwd_chars.is_empty() || password == &String::from(""){
+        let e: String = String::from("You cannot supply an empty string!");
+        return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
+    }
+    else {
+        let char_list: Vec<String> = clean_split(&password, &String::from(""));
+        for item in &char_list {
+            let current_item: &String = &item;
+            let current_item_type: String = string_type(&item);
+            let current_index: usize = match get_index(&char_list, &item){
+                Ok(current_index) => current_index,
                 Err(e) => {
                     return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
                 }
             };
-            if item_space > SECURITY_WEIGHT {
-                result = result + ARABIC_CHARACTER_WEIGHT;
-            } else {}
-        } else if current_item_type == String::from("specialChar") &&
-            previous_item_type == String::from("specialChar") {
-                result = result + SPECIAL_CHAR_WEIGHT;
-        } else if current_item_type == String::from("int") && previous_item_type == String::from("int") {
-            let item_space: usize = get_num_space(&current_item, &previous_item);
-            if item_space > SECURITY_WEIGHT {
-                result = result + ARABIC_CHARACTER_WEIGHT;
-            } else {}
-        }
-        else {}
+            if &current_index == &0 {}
+            else {
+                let previous_item_index = current_index - 1;
+                let previous_item: &String = &char_list.clone()[previous_item_index].clone();
+                let previous_item_type = string_type(&previous_item);
+                if current_item_type == String::from("normChar") && previous_item_type == String::from("normChar") {
+                    let item_space = match get_char_space(&current_item, &previous_item){
+                        Ok(item_space) => item_space,
+                        Err(e) => {
+                            return Err::<usize, FlekError>(FlekError::new(&e.to_string()));
+                        }
+                    };
+                    if item_space > SECURITY_WEIGHT {
+                        result = result + ARABIC_CHARACTER_WEIGHT;
+                    } 
+                    else {}
+                } 
+                else if current_item_type == String::from("specialChar") &&
+                    previous_item_type == String::from("specialChar") {
+                    result = result + SPECIAL_CHAR_WEIGHT;
+                } 
+                else if current_item_type == String::from("int") && previous_item_type == String::from("int") {
+                    let item_space: usize = get_num_space(&current_item, &previous_item);
+                    if item_space > SECURITY_WEIGHT {
+                        result = result + ARABIC_CHARACTER_WEIGHT;
+                    } 
+                    else {}
+                }
+                else {}
+            }
         }
     }
     return Ok(result);
@@ -243,18 +252,24 @@ pub fn generate_secure_password(
 ) -> Result<String, FlekError> {
     let mut result: String = String::from("");
     let mut security_tracker: bool = true;
-    while security_tracker {
-        let pwd = generate_password(length);
-        match is_secure(&pwd){
-            Ok(status) => {
-                if status {
-                    result = pwd;
-                    security_tracker = false;
+    if length == &0{
+        let e: String = String::from("The length cannot be zero!");
+        return Err::<String, FlekError>(FlekError::new(&e.to_string()));
+    }
+    else {
+        while security_tracker {
+            let pwd = generate_password(length);
+            match is_secure(&pwd){
+                Ok(status) => {
+                    if status {
+                        result = pwd;
+                        security_tracker = false;
+                    }
+                    else {}
                 }
-                else {}
-            }
-            Err(e) => {
-                return Err::<String, FlekError>(FlekError::new(&e.to_string()));
+                Err(e) => {
+                    return Err::<String, FlekError>(FlekError::new(&e.to_string()));
+                }
             }
         }
     }
