@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = "1.8.0"
+flek = "1.9.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -31,14 +31,16 @@ Alternatively, you can download a compiled binary for 64-bit systems from this r
 I recently uploaded ***Flek*** to the Arch User Repository so you can install ***Flek*** from there using this command:
 
 ```bash
-paru -S flek
+paru -S flek-bin
 ```
+
+The package's page on the AUR can be viewed [here](https://aur.archlinux.org/packages/flek-bin).
 
 ## USAGE
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.8.0).
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.9.0).
 
 ### COMMAND LINE
 
@@ -148,6 +150,11 @@ There are other implementations of my algorithm in other languages:
 - Updated documentation.
 - Added an error case for when an invalid length is supplied to the API for generating a secure password!
 - Added an error case for when an empty string is supplied to the API for password analysis.
+
+### Version 1.9.0
+
+- Updated documentation.
+- Fixed typos and wrong instructions.
 
 ## NOTE
 

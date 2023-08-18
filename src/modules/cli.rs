@@ -37,7 +37,7 @@ pub fn cli() -> () {
     // data.
     let mut app: App = App::new(
         &"Flek",
-        &"1.8.0",
+        &"1.9.0",
         &"Angel Dollface"
     );
 
