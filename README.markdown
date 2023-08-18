@@ -15,7 +15,7 @@ This is my Rust implementation of a package I wrote in [Dart](https://github.com
 To use ***Flek*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-flek = "1.6.0"
+flek = "1.7.0"
 ```
 
 ### FOR THE COMMAND LINE
@@ -38,7 +38,7 @@ paru -S flek
 
 ### APIs
 
-For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.6.0).
+For usage instuctions on ***Flek***'s functions and structures, please read the documentation [here](https://docs.rs/flek/1.7.0).
 
 ### COMMAND LINE
 
@@ -52,6 +52,16 @@ flek -p 1969HoglinSteak_@
 flek --pwd 1969HoglinSteak_@
 # OR
 flek pwd 1969HoglinSteak_@
+```
+
+- Generate a secure password from a specified length:
+
+```bash
+flek -g 19
+# OR
+flek --gen 19
+# OR
+flek gen 19
 ```
 
 - Get version info:
@@ -124,6 +134,14 @@ There are other implementations of my algorithm in other languages:
 - Updated documentation.
 - Updated the version of the CLI tool.
 - Automatic generation of binaries for 64-bit desktop platforms.
+
+### Version 1.7.0
+
+- Updated documentation.
+- Updated the version of the CLI tool.
+- Added a method to generate a secure password.
+- Added a flag to the CLI tool to generate a secure password.
+- Added a data structure to hold information about a secure password.
 
 ## NOTE
 

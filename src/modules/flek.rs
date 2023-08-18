@@ -3,6 +3,17 @@ FLEK by Alexander Abraham a.k.a. "Angel Dollface".
 Licensed under the MIT license.
 */
 
+/// Importing the method
+/// to generate a SHA 256
+/// digest of a secure
+/// password.
+use sha256::digest;
+
+/// Importing the "Serialize"
+/// trait macro to serialize a 
+/// Rust data structure.
+use serde::Serialize;
+
 /// Importing the "get_index"
 /// method from the "coutils"
 /// crate to get the index
@@ -53,17 +64,19 @@ use super::weights::ARABIC_CHARACTER_WEIGHT;
 
 /// A struct to represent password security
 /// information.
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct SecurityInfo {
     pub password: String,
     pub score: usize,
     pub is_secure: bool
 }
 
-/// Implements standard methods for this struct.
+/// Implements standard 
+/// methods for the "SecurityInfo" struct.
 impl SecurityInfo {
 
-    /// Creates a new instance of the struct.
+    /// Creates a new instance 
+    /// of the "SecurityInfo" struct.
     pub fn new(password: &String, score: &usize, is_secure: &bool) -> SecurityInfo {
         return SecurityInfo {
             password: password.to_owned(),
@@ -82,6 +95,41 @@ impl SecurityInfo {
             &self.is_secure
         );
     }
+
+}
+
+/// A struct to represent password security
+/// information.
+#[derive(Debug, Clone, PartialEq, Serialize)]
+pub struct PasswordInfo {
+    pub password: String,
+    pub sha_sum: String
+}
+
+/// Implements standard 
+/// methods for the "PasswordInfo" struct.
+impl PasswordInfo{
+
+    /// Creates a new instance 
+    /// of the "PasswordInfo" struct.
+    pub fn new(password: &String) -> PasswordInfo {
+        let digest: String = digest(password);
+        return PasswordInfo {
+            password: password.to_owned(),
+            sha_sum: digest
+        }
+    }
+
+    /// Returns a string representation of the
+    /// password.
+    pub fn to_string(&self) -> String {
+        return format!(
+            "Password: {}\nSHA 256: {}",
+            &self.password, 
+            &self.sha_sum, 
+        );
+    }
+
 }
 
 /// Compute the strength of a password.
@@ -169,7 +217,7 @@ pub fn security_info(password: &String) -> Result<SecurityInfo, FlekError> {
     );
 }
 
-/// Generate a random password.
+/// Generate a random password of specified length.
 pub fn generate_password(length:&usize) -> String {
     let mut result_list: Vec<String> = Vec::new();
     let alphabet_string: String = String::from(
@@ -185,4 +233,42 @@ pub fn generate_password(length:&usize) -> String {
     }
     let result: String = result_list.join("");
     return result;
+}
+
+/// Generate a password that has been checked
+/// by my algorithm. In the event of this not
+/// being possible, an error is returned.
+pub fn generate_secure_password(
+    length: &usize
+) -> Result<String, FlekError> {
+    let mut result: String = String::from("");
+    let mut security_tracker: bool = true;
+    while security_tracker {
+        let pwd = generate_password(length);
+        match is_secure(&pwd){
+            Ok(status) => {
+                if status {
+                    result = pwd;
+                    security_tracker = false;
+                }
+                else {}
+            }
+            Err(e) => {
+                return Err::<String, FlekError>(FlekError::new(&e.to_string()));
+            }
+        }
+    }
+    return Ok(result);
+}
+
+/// A method to generate an instance of a
+/// data structure that holds information about
+/// a secure password.
+pub fn secure_password_info(
+    length: &usize
+) -> Result<PasswordInfo, FlekError> {
+    match generate_secure_password(length){
+        Ok(pwd) => return Ok(PasswordInfo::new(&pwd)),
+        Err(e) => return Err::<PasswordInfo, FlekError>(FlekError::new(&e.to_string()))
+    };
 }
